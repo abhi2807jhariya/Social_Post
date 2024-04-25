@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <title>Dashboard</title>
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+    <link href="assets/css/bootstrap.v5.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet" />
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/form-outline.css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" />
+    <script src="jquery-3.7.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+
+
+  <style>
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      border: 1px solid #888;
+      width: 50%;
+    }
+
+    .model-head {
+      background-color: #d396fe;
+      padding: 5px;
+    }
+
+    .model-body {
+      padding: 5px;
+      display: flex;
+      justify-content: space-evenly;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #ffffff;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #timer-container {
+      text-align: left;
+      margin: 20px;
+    }
+
+    .countdown-item {
+      font-size: 12px;
+      margin-right: 10px;
+      padding: 5px;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      display: inline-block;
+    }
+
+    .date-section {
+      padding: 15px;
+    }
+
+
+    @media screen and (max-width: 768px) {
+      .modal-content {
+        width: 100%;
+      }
+    }
+
+    .multiselect {
+      width: 200px;
+    }
+
+    .selectBox {
+      position: relative;
+    }
+
+    .selectBox select {
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .overSelect {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+    }
+
+    #checkboxes {
+      display: none;
+      border: 1px #dadada solid;
+    }
+
+    #checkboxes label {
+      display: block;
+    }
+
+    #checkboxes label:hover {
+      background-color: #1e90ff;
+    }
+
+    .container {
+      user-select: none;
+    }
+
+    .image {
+      width: 30px;
+    }
+  </style>
+
+  <body>
+    <!--Header start-->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <img src="assets/image/crm.png" alt="" width="100%" class="logo1">
+        <i class="toggle-sidebar-btn pe-2">
+          <i class="fa-solid fa-bars"></i>
+        </i>
+      </div>
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-4 list-inline">
+            <a class="nav-link dropdown-toggle text-black small" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">User</a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li>
+                <a class="dropdown-item d-flex align-items-center" href="login.html"><i class="fa fa-sign-out"></i>
+                  <span>Logout</span></a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!--Header end-->
+    <!--artical start-->
+    <!--Sidebar start-->
+    <!--left panel start-->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item">
+          <img src="assets/image/home.png" alt="" />
+          <a class="" href="index.html"><span class="menu-list"><b>Dashboard</b></span></a>
+        </li>
+        <li class="nav-item">
+          <img src="assets/image/composer.png" alt="" />
+          <a class="active" href="composer.html">
+            <span class="menu-list"><b>Composer</b></span></a>
+        </li>
+
+
+        <li class="nav-item">
+          <img src="assets/image/account.png" alt="" />
+          <a class="" href="add_account.html">
+            <span class="menu-list"><b>Add Account</b></span></a>
+        </li>
+        <li class="nav-item">
+          <img src="assets/image/calendar.png" alt="" />
+          <a class="" href="calendar.html">
+            <span class="menu-list"><b>Calendar</b></span></a>
+        </li>
+
+
+        <li class="nav-item">
+          <img src="assets/image/report.png" alt="" />
+          <a class="" href="index.html">
+            <span class="menu-list"><b>Report</b></span></a>
+        </li>
+      </ul>
+    </aside>
+    <!--left panel end-->
+    <!--Sidebar end-->
+    <!--Main start-->
+    <main id="main" class="main">
+      <section class="section">
+        <h4>New post</h4>
+        <!--Table code start-->
+        <div class="row mt-3">
+          <div class="col-sm-6 mb-3">
+            <div class="card">
+              <div class="card">
+                <div class="card-body">
+                  <h6 class="card-title"><b>Publish to</b></h6>
+                  <br />
+                  <select class="form-select">
+                    <option value="">Select a Social account</option>
+                    <option value="Instagram">Instagram</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="LinkedIn">LinkedIn</option>
+                  </select>
+                  <br />
+                  <!-- <div class="rounded p-2" style="background-color: #d9d9d9">
+                    <div class="d-flex">
+                      <div class="d-flex">
+                        <div class="p-2">
+                          <img src="assets/image/insta-icon.png" alt="" />
+                        </div>
+                        <p>
+                          Create all your content in one place! To create an
+                          Instagram story, select an Instagram account, and the
+                          choose Story.
+                        </p>
+                      </div>
+                      <div>
+                        <img src="assets/image/cross.png" alt="" />
+                      </div>
+                    </div>
+                  </div> -->
+                  <br />
+                  <!-- <div class="rounded p-2" style="background-color: #d9d9d9">
+                    <div class="d-flex">
+                      <div class="d-flex">
+                        <div class="p-2">
+                          <img src="assets/image/i-icon.png" alt="" />
+                        </div>
+                        <div>
+                          <h6><b>End writer’s block with CylsysWriter AI</b></h6>
+                          <p>
+                            Stuck starting at a blank page? Let CylsysWriter AI
+                            create compelling,on- brand social captions for you in
+                            seconds. <strong>Create a caption now</strong>
+                          </p>
+                          me
+                        </div>
+                      </div>
+                      <div>
+                        <img src="assets/image/cross.png" alt="" />
+                      </div>
+                    </div>
+                  </div> -->
+                  <br />
+                  <button class="btn border">Content</button>
+                  <div class="card mt-2">
+                    <div class="card-body">
+                      <p>Enter your text and links</p>
+                      <textarea class="border-0 w-100" id="text" name="text" rows="10">
+                    </textarea>
+                      <hr />
+                      <div class="row mt-3">
+                        <div class="col-sm-4 mb-3">
+                          <div class="card" style="border-style: dashed">
+                            <div class="card-body">
+                              <img id="preview" class="w-100" alt="Preview Image" />
+                            </div>
+                          </div>
+                          <br />
+                          <div class="text-center">
+                            <input type="file" accept="image/*" onchange="previewImage(event)"
+                              style="font-size: 10px;" />
+                          </div>
+                          <br />
+                          <div class="d-flex">
+                            <button class="btn border" id="schedule">
+                              schedule
+                            </button>&nbsp;
+                            <button class="btn border w-10" id="">
+                              Post Now
+                            </button>
+                          </div>
+
+                          
+                          <div id="scheduled" class="modal">
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                              <div class="model-head d-flex justify-content-between">
+                                <h6>Schedule</h6>
+                                <span class="close">&times;</span>
+                              </div>
+                              <div>
+                                <div class="model-body">
+                                  <button class="btn border">One time</button>
+                                  <button class="btn border">Daily</button>
+                                  <button class="btn border">Weekly</button>
+                                  <button class="btn border">Monthly</button>
+                                </div>
+                                <hr />
+                                <div class="date-section">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <label for="start-date">Start Date</label>
+                                      <input type="date" id="start-date" class="form-control" />
+                                    </div>
+                                    <div class="col-md-6">
+                                      <label for="time">Select time:</label>
+                                      <input type="time" id="time" class="form-control" />
+                                    </div>
+
+                                  </div><br>
+
+                                  <div id="timer-container d-flex">
+                                    <p>Time Remaining :</p>
+                                    <div class="countdown-item" id="hours">Hours: 0</div>
+                                    <div class="countdown-item" id="minutes">Minutes: 0</div>
+                                    <div class="countdown-item" id="seconds">Seconds: 0</div>
+                                  </div>
+                                  <div>
+                                    <label for="plateform">Plateform</label>
+                                    <select id="plateform" class="form-select plateform">
+                                      <option value="select">Select Plateform</option>
+                                      <option value="instagram">Instagram</option>
+                                      <option value="facebook">Facebook</option>
+                                      <option value="twitter">Twitter</option>
+                                      <option value="linkedin">LinkedIn</option>
+                                    </select>
+                                    <label for="pinned">Pinned</label>
+                                    <input type="text" id="pinned" class="form-control">
+                                  </div><br>
+                                  <div class="text-center">
+                                 
+                                    <a href="composer.html"><button class="btn border">Save</button></a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-sm-4 mb-3">
+                          <div class="card" style="border-style: dashed">
+                            <div class="card-body">
+                              <h6 class="card-title text-center">
+                                <img src="assets/image/book.png" alt="" />
+                              </h6>
+                              <br />
+                            </div>
+                          </div>
+                          <br />
+                          <button class="btn border" style="font-size: 11px">
+                            View More Templates
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br />
+          
+          </div>
+          <div class="col-sm-6 mb-3" style="background-color: #f3f4f5;">
+            <div class="d-flex">
+              <div class="p-1">
+                <img src="assets/image/linked.png" alt="" />
+              </div>
+              <div class="p-1">
+                <h5 class="mt-2">LinkedIn</h5>
+
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <div class="p-1">
+                      <img src="assets/image/ak.png" alt="" />
+                    </div>
+                    <div class="p-1">
+                      <p class="m-0">Aakanksha Gupta</p>
+                      <p class="m-0" style="font-size: 15px; color: #7a7777;">Just Now</p>
+                    </div>
+                  </div>
+                  <div><img src="assets/image/3dot.png" alt=""></div>
+                </div>
+                <h6 class="card-title">
+                  Hi Everyone
+                </h6>
+                <div>
+                  <ul style="list-style: none; display: flex;" class="p-0">
+                    <li class="m-0 p-2"> <span><i class="fa-solid fa-thumbs-up"></i></span> Like</li>
+                    <li class="m-0 p-2"><span><i class="fa-regular fa-message"></i></span> Comment</li>
+                    <li class="m-0 p-2"><span><i class="fa-solid fa-share"></i></span> Share</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <br />
+            <div class="d-flex">
+              <div class="p-1">
+                <img src="assets/image/face.png" alt="" />
+              </div>
+              <div class="p-1">
+                <h5 class="mt-2">LinkedIn</h5>
+
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-body">
+                <div class="d-flex justify-content-between">
+                  <div class="d-flex">
+                    <div class="p-1">
+                      <img src="assets/image/ak.png" alt="" />
+                    </div>
+                    <div class="p-1">
+                      <p class="m-0">Aakanksha Gupta</p>
+                      <p class="m-0" style="font-size: 15px; color: #7a7777;">Just Now</p>
+                    </div>
+                  </div>
+                  <div><img src="assets/image/3dot.png" alt=""></div>
+                </div>
+                <h6 class="card-title">
+                  Hi Everyone
+                </h6>
+                <div>
+                  <ul style="list-style: none; display: flex;" class="p-0">
+                    <li class="m-0 p-2"> <span><i class="fa-solid fa-thumbs-up"></i></span> Like</li>
+                    <li class="m-0 p-2"><span><i class="fa-regular fa-message"></i></span> Comment</li>
+                    <li class="m-0 p-2"><span><i class="fa-solid fa-share"></i></span> Share</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div>
+
+        </div>
+      </section>
+    </main>
+    <!--Main end-->
+    <!--artical end-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cy.js"></script>
+
+    <script type="text/javascript">
+      function previewImage(event) {
+        var input = event.target;
+        var image = document.getElementById("preview");
+        if (input.files && input.files[0]) {
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            image.src = e.target.result;
+          };
+          reader.readAsDataURL(input.files[0]);
+        }
+      }
+    </script>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("scheduled");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("schedule");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+    <script>
+      // Set the target date and time for the countdown
+      const targetDate = new Date('2024-12-31T23:59:59').getTime();
+
+      // Update the countdown every second
+      const countdownInterval = setInterval(function () {
+        // Get the current date and time
+        const currentDate = new Date().getTime();
+
+        // Calculate the time remaining
+        const timeRemaining = targetDate - currentDate;
+
+        // Check if the countdown has reached zero
+        if (timeRemaining <= 0) {
+          clearInterval(countdownInterval); // Stop the countdown when it reaches zero
+          document.getElementById('hours').innerHTML = 'Hours: 0';
+          document.getElementById('minutes').innerHTML = 'Minutes: 0';
+          document.getElementById('seconds').innerHTML = 'Seconds: 0';
+        } else {
+          // Calculate days, hours, minutes, and seconds
+          const hours = Math.floor(timeRemaining / (1000 * 60 * 60));
+          const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+          // Display the countdown in separate HTML elements
+          document.getElementById('hours').innerHTML = `Hours: ${hours}`;
+          document.getElementById('minutes').innerHTML = `Minutes: ${minutes}`;
+          document.getElementById('seconds').innerHTML = `Seconds: ${seconds}`;
+        }
+      }, 1000); // Update every second
+    </script>
+    <script>
+      var expanded = false;
+
+      function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+          checkboxes.style.display = "block";
+          expanded = true;
+        } else {
+          checkboxes.style.display = "none";
+          expanded = false;
+        }
+      }
+
+
+      function checkAll(o) {
+        var boxes = document.getElementsByTagName("input");
+        for (var x = 0; x < boxes.length; x++) {
+          var obj = boxes[x];
+          if (obj.type == "checkbox") {
+            if (obj.name != "check")
+              obj.checked = o.checked;
+          }
+        }
+      }
+
+    </script>
+    <script>
+      function myFunction() {
+        alert("The post is scheduled successfully");
+      }
+    </script>
+    <script>
+      function checkAll(o) {
+        var boxes = document.getElementsByTagName("input");
+        for (var x = 0; x < boxes.length; x++) {
+          var obj = boxes[x];
+          if (obj.type == "checkbox") {
+            if (obj.name != "check")
+              obj.checked = o.checked;
+          }
+        }
+      }
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>Dashboard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="assets/css/bootstrap.v5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/form-outline.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+  </head>
+  <style>
+    .search-container {
+      position: relative;
+      max-width: 300px;
+      width: 100%;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 600px) {
+      .notification {
+        display: none;
+      }
+
+      .logo1 {
+        width: 60px;
+      }
+
+      .humburger {
+        font-size: 20px;
+      }
+    }
+
+    @media screen and (max-width: 400px) {
+      .nav-search {
+        padding: 0 !important;
+      }
+
+      .search1 {
+        padding: 2px;
+      }
+
+    }
+
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      z-index: 1;
+      /* Sit on top */
+      padding-top: 100px;
+      /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    /* The Close Button */
+    .close {
+      color: #aaaaaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  </style>
+
+  <body>
+    <!--Header start-->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <img src="assets/image/crm.png" alt="" width="100%" class="logo1">
+        <i class="toggle-sidebar-btn pe-2">
+          <i class="fa-solid fa-bars humburger"></i>
+        </i>
+
+      </div>
+
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center nav-search">
+
+          <li class="nav-item dropdown pe-4 list-inline"><img src="assets/image/bell.png" alt=""> <span
+              class="notification ">Notification</span></li>
+          <li class="nav-item dropdown pe-4 list-inline"><a class="nav-link dropdown-toggle text-black small" href="#"
+              id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">User</a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li><a class="dropdown-item d-flex align-items-center" href="login.html"><i class="fa fa-sign-out"></i>
+                  <span>Logout</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!--Header end-->
+    <!--artical start-->
+    <!--Sidebar start-->
+    <!--left panel start-->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item"><img src="assets/image/home.png" alt="">
+          <a class="active" href="index.html"><span class="menu-list"><b>Dashboard</b></span></a>
+        </li>
+        <li class="nav-item"><img src="assets/image/composer.png" alt="">
+          <a class="" href="composer.html"> <span class="menu-list"><b>Composer</b></span></a>
+
+
+        <li class="nav-item">
+          <img src="assets/image/account.png" alt="">
+          <a class="" href="add_account.html"> <span class="menu-list"><b>Add Account</b></span></a>
+        </li>
+        <li class="nav-item">
+          <img src="assets/image/calendar.png" alt="">
+          <a class="" href="calendar.html"> <span class="menu-list"><b>Calendar</b></span></a>
+        </li>
+
+
+        <li class="nav-item">
+          <img src="assets/image/report.png" alt="">
+          <a class="" href="report.html"> <span class="menu-list"><b>Report</b></span></a>
+        </li>
+      </ul>
+    </aside>
+    <!--left panel end-->
+    <!--Sidebar end-->
+    <!--Main start-->
+    <main id="main" class="main">
+      <section class="section">
+        <!--Table code start-->
+        <div class="row mt-3">
+          <div class="col-sm-12 mb-3">
+
+
+            <div class="card p-2">
+              <div class="table-responsive">
+
+                <div class="p-2">
+                  <h6><b>Active Accounts/Connected Accounts</b></h6>
+
+                  <div class="border p-2">
+
+                    <div>
+
+                    </div>
+                    <div>
+                      <div class="row">
+                        <div class="col-md-9">
+                          <img src="assets/image/facebook.png" alt="">
+                          <h6><b>AakanshaGupta123</b></h6>
+                          <p style="color: #929292; font-size: 14px;">16 January 2024 At 12.30 PM</p>
+                        </div>
+                        <div class="col-md-3">
+                          <p>Connected <sup><img src="assets/image/green-dot.png" alt=""></sup></p>
+
+                        </div>
+                      </div>
+
+                    </div><br>
+                    <div class=" p-2">
+
+                      <div class="p-1">
+                        <!-- <img src="assets/image/linkedin.png" alt=""> -->
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-md-9">
+                            <img src="assets/image/linkedin.png" alt="">
+                            <h6><b>AakanshaGupta123</b></h6>
+                            <p style="color: #929292; font-size: 14px;">16 January 2024 At 12.30 PM</p>
+                          </div>
+                          <div class="col-md-3">
+                            <p>Connected <sup><img src="assets/image/green-dot.png" alt=""></sup></p>
+
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+
+
+                  <div class="text-center">
+                    <a href="#" class="btn border" id="myBtn"><b>Add Social Accounts</b></a>
+                  </div>
+                </div>
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                  <!-- Modal content -->
+                  <div class="modal-content w-50">
+                    <div>
+                      <span class="close">&times;</span>
+                      <p><b>Add a social account</b></p>
+
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <button class="btn btn-primary" style="    float: left;
+        position: relative;">Add Private Account</button>
+                        </div>
+                      </div><br>
+                      <div>
+                        <div class="row">
+
+
+                          <div class="col-md-2">
+                            <a href="signup_addaccount.html"><img src="assets/image/linkedin.png" alt=""
+                                class="img1"></a>
+                          </div>
+                          <div class="col-md-2">
+                            <a href="facebook_login.html"><img src="assets/image/facebook.png" alt="" class="img1"></a>
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                      <div>
+
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+              <!-- <div class="col-sm-6 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title"><b>Last Schedule</b></h6><br>
+                    <div class="text-center">
+                      <img src="assets/image/schedule.jpg" alt="">
+                    </div><br>
+                    <h6 class="card-title"><b>12 December 2024</b></h6>
+                  </div>
+                </div>
+              </div> -->
+              <!-- <div class="col-sm-6 mb-3">
+                <div class="card">
+                  <div class="card-body">
+                    <h6 class="card-title"><b>Upcoming Post</b></h6><br>
+                    <div class="d-flex">
+                      <img src="assets/image/Willum-Bones.jpg" alt="">
+                      <p class="m-2"><b>Willum Bones</b></p>
+                    </div><br>
+                    <div class="d-flex">
+                      <img src="assets/image/Willum-Bones.jpg" alt="">
+                      <p class="m-2"><b>Willum Bones</b></p>
+
+                    </div>
+                    <a href="#" class="btn float-end">See all <i class="fa-solid fa-arrow-right"></i></a>
+                  </div>
+                </div>
+
+              </div> -->
+            </div>
+
+            <div class="col-md-12 mt-4">
+              <div class="card lg-card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5 class="card-title"><b>Upcoming Post</b></h5>
+                        </div>
+                      
+                      </div>
+
+                      <div class="table-responsive">
+                        <table class="table table-hover mt-3">
+                          <thead>
+                            <tr class="btn-s">
+                              <th scope="col" id="table_Head">Title</th>
+                              <th scope="col" id="table_Head">Platform</th>
+                              <th scope="col" id="table_Head">Date</th>
+                              
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td id="for_table_color">Lunar New Year</td>
+                              <td id="for_table_color"><img src="assets/image/face.png" alt=""></td>
+                              <td id="for_table_color">10/02/2024</td>
+                             
+                            </tr>
+                            <tr>
+                              <td id="for_table_color">Vasant Panchami</td>
+                              <td id="for_table_color"><img src="assets/image/linked.png" alt=""></td>
+                              <td id="for_table_color">13/02/2024</td>
+                              
+                            </tr>
+                            <tr>
+                              <td id="for_table_color">Shivaji Jayanti</td>
+                              <td id="for_table_color"><img src="assets/image/face.png" alt=""></td>
+                              <td id="for_table_color">18/02/2024</td>
+                              
+                            </tr>
+                            <tr>
+                              <td id="for_table_color">Holi</td>
+                              <td id="for_table_color"><img src="assets/image/linked.png" alt=""></td>
+                              <td id="for_table_color">25/03/2024</td>
+                            
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5 class="card-title">Last Transaction</h5>
+                          <p>Shown As per Week</p>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <img src="assets/image/network.svg" alt="" />
+                        </div>
+                      </div>
+                      <p>
+                        <img src="assets/image/linechart.svg" alt="" class="w-100" />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+           
+            <!--Table code end-->
+            <div class="row mt-3">
+
+
+              <div class="col-sm-6 mb-3">
+
+              </div>
+            </div>
+          </div>
+      </section>
+
+
+    </main>
+    <!--Main end-->
+    <!--artical end-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cy.js"></script>
+    <script src="assets/js/newscript.js"></script>
+    <script>
+      // Get the modal
+      var modal = document.getElementById("myModal");
+
+      // Get the button that opens the modal
+      var btn = document.getElementById("myBtn");
+
+      // Get the <span> element that closes the modal
+      var span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal 
+      btn.onclick = function () {
+        modal.style.display = "block";
+      }
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        modal.style.display = "none";
+      }
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>Dashboard</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="assets/css/bootstrap.v5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/form-outline.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+  </head>
+
+
+  <body>
+    <!--Header start-->
+    <header id="header" class="header fixed-top d-flex align-items-center p-3">
+        <div class="col-md-2">
+            <a routerLink="/dashboard"><img style="width: 65px; height: 35px;" [src]="company_logo" alt="logo" /></a>
+        </div>
+        &nbsp;&nbsp;
+    
+        <!-- Hamburger Menu Button -->
+        <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <!-- End Logo -->
+        <div class="col-md-8 collapse navbar-collapse" id="navbarSupportedContent" *ngIf="this.userPermission">
+    
+            <ul class="sidebar-nav" style="display: flex; justify-content: center">
+                <li class="nav-item" *ngIf="this.userPermission['Campaign']?.view">
+                    <a class="nav-link collapsed" routerLink="/campaigns" routerLinkActive="active">
+                        <i class="bi bi-megaphone"></i><span>Campaigns</span>
+                    </a>
+                </li>
+                <!-- Other menu items -->
+            </ul>
+        </div>
+        &nbsp;
+    
+        <div class="d-flex col-md-2">
+            <nav class="header-nav ms-auto cursor-pointer">
+                <ul class="d-flex align-items-center">
+                    <li class="nav-item dropdown navavatar pe-3">
+                        <a class="nav-link nav-profile d-flex align-items-center pe-0" data-bs-toggle="dropdown">
+                            <span class="d-none d-md-block dropdown-toggle btn-info1 p-2"><i class="proimg bi-person-circle"
+                                    alt="profile_picture"></i>&nbsp;{{userDetails.username}}</span> </a>
+    
+                        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                            <!-- Dropdown menu items -->
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+      <!-- End Header -->
+    <!--Header end-->
+    <!--artical start-->
+    <!--Sidebar start-->
+    <!--left panel start-->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item"><img src="assets/image/home.png" alt="">
+          <a class="active" href="index.html"><span class="menu-list"><b>Dashboard</b></span></a>
+        </li>
+        <li class="nav-item"><img src="assets/image/composer.png" alt="">
+          <a class="" href="composer.html"> <span class="menu-list"><b>Composer</b></span></a>
+
+
+        <li class="nav-item">
+          <img src="assets/image/account.png" alt="">
+          <a class="" href="add_account.html"> <span class="menu-list"><b>Add Account</b></span></a>
+        </li>
+        <li class="nav-item">
+          <img src="assets/image/calendar.png" alt="">
+          <a class="" href="calendar.html"> <span class="menu-list"><b>Calendar</b></span></a>
+        </li>
+
+
+        <li class="nav-item">
+          <img src="assets/image/report.png" alt="">
+          <a class="" href="report.html"> <span class="menu-list"><b>Report</b></span></a>
+        </li>
+      </ul>
+    </aside>
+    <!--left panel end-->
+    <!--Sidebar end-->
+    <!--Main start-->
+    <main id="main" class="main">
+      <section class="section">
+        <!--Table code start-->
+        <div class="row mt-3">
+          <div class="col-sm-12 mb-3">
+
+
+            <div class="card p-2">
+              <div class="table-responsive">
+
+                <div class="p-2">
+                  <h6><b>Active Accounts/Connected Accounts</b></h6>
+
+                  <div class="border p-2">
+
+                    <div>
+
+                    </div>
+                    <div>
+                      <div class="row">
+                        <div class="col-md-9">
+                          <img src="assets/image/facebook.png" alt="">
+                          <h6><b>AakanshaGupta123</b></h6>
+                          <p style="color: #929292; font-size: 14px;">16 January 2024 At 12.30 PM</p>
+                        </div>
+                        <div class="col-md-3">
+                          <p>Connected <sup><img src="assets/image/green-dot.png" alt=""></sup></p>
+
+                        </div>
+                      </div>
+
+                    </div><br>
+                    <div class=" p-2">
+
+                      <div class="p-1">
+                        <!-- <img src="assets/image/linkedin.png" alt=""> -->
+                      </div>
+                      <div>
+                        <div class="row">
+                          <div class="col-md-9">
+                            <img src="assets/image/linkedin.png" alt="">
+                            <h6><b>AakanshaGupta123</b></h6>
+                            <p style="color: #929292; font-size: 14px;">16 January 2024 At 12.30 PM</p>
+                          </div>
+                          <div class="col-md-3">
+                            <p>Connected <sup><img src="assets/image/green-dot.png" alt=""></sup></p>
+
+                          </div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                  <br>
+
+
+                  <div class="text-center">
+                    <a href="#" class="btn border" id="myBtn"><b>Add Social Accounts</b></a>
+                  </div>
+                </div>
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
+
+                  <!-- Modal content -->
+                  <div class="modal-content w-50">
+                    <div>
+                      <span class="close">&times;</span>
+                      <p><b>Add a social account</b></p>
+
+                    </div>
+                    <div class="modal-body">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <button class="btn btn-primary" style="    float: left;
+        position: relative;">Add Private Account</button>
+                        </div>
+                      </div><br>
+                      <div>
+                        <div class="row">
+
+
+                          <div class="col-md-2">
+                            <a href="signup_addaccount.html"><img src="assets/image/linkedin.png" alt=""
+                                class="img1"></a>
+                          </div>
+                          <div class="col-md-2">
+                            <a href="facebook_login.html"><img src="assets/image/facebook.png" alt="" class="img1"></a>
+                          </div>
+                        </div>
+
+                      </div>
+
+
+                      <div>
+
+                      </div>
+
+
+                    </div>
+                  </div>
+
+                </div>
+
+
+              </div>
+            
+            </div>
+
+            <div class="col-md-12 mt-4">
+              <div class="card lg-card">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5 class="card-title"><b>Upcoming Post</b></h5>
+                        </div>
+                      
+                      </div>
+
+                      <div class="table-responsive">
+                        <table class="table table-hover mt-3">
+                          <thead>
+                            <tr class="btn-s">
+                              <th scope="col" id="table_Head">Title</th>
+                              <th scope="col" id="table_Head">Platform</th>
+                              <th scope="col" id="table_Head">Date</th>
+                              
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td id="for_table_color">Lunar New Year</td>
+                              <td id="for_table_color"><img src="assets/image/face.png" alt=""></td>
+                              <td id="for_table_color">10/02/2024</td>
+                             
+                            </tr>
+                            <tr>
+                              <td id="for_table_color">Vasant Panchami</td>
+                              <td id="for_table_color"><img src="assets/image/linked.png" alt=""></td>
+                              <td id="for_table_color">13/02/2024</td>
+                              
+                            </tr>
+                            <tr>
+                              <td id="for_table_color">Shivaji Jayanti</td>
+                              <td id="for_table_color"><img src="assets/image/face.png" alt=""></td>
+                              <td id="for_table_color">18/02/2024</td>
+                              
+                            </tr>
+                            <tr>
+                              <td id="for_table_color">Holi</td>
+                              <td id="for_table_color"><img src="assets/image/linked.png" alt=""></td>
+                              <td id="for_table_color">25/03/2024</td>
+                            
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <h5 class="card-title">Last Transaction</h5>
+                          <p>Shown As per Week</p>
+                        </div>
+                        <div class="col-md-6 text-right">
+                          <img src="assets/image/network.svg" alt="" />
+                        </div>
+                      </div>
+                      <p>
+                        <img src="assets/image/linechart.svg" alt="" class="w-100" />
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+           
+            <!--Table code end-->
+            
+          </div>
+      </section>
+
+
+    </main>
+    <!--Main end-->
+    <!--artical end-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cy.js"></script>
+    <script src="assets/js/newscript.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var navbarToggle = document.querySelector(".navbar-toggler");
+            var navbarCollapse = document.querySelector("#navbarSupportedContent");
+    
+            navbarToggle.addEventListener("click", function () {
+                navbarCollapse.classList.toggle("show");
+            });
+        });
+    </script>
+  </body>
+
+</html>

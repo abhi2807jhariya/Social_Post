@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title>Report</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <link href="assets/css/bootstrap.v5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/css/main.css" rel="stylesheet">
+    <link href="assets/css/form-outline.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <style>
+    table,
+    th,
+    td {
+      padding: 10px !important;
+    }
+
+    .day {
+      width: 150px;
+    }
+
+    .cal {
+      width: 100%;
+      overflow-x: scroll;
+    }
+
+    .cal-head {
+      background-color: #D9D9D9;
+      padding: 15px;
+    }
+
+    .tody-btn {
+      padding: 10px;
+      border-radius: 20px;
+      width: 90px;
+      background-color: blue;
+      border: none;
+      color: #fff;
+    }
+
+    .pre {
+      padding: 10px;
+      border-radius: 50%;
+      width: 40px;
+      background-color: blue;
+      border: none;
+      color: #fff;
+    }
+
+    .date {
+      padding: 10px;
+      border-radius: 20px;
+      width: 150px;
+      background-color: blue;
+      border: none;
+      color: #fff;
+    }
+
+
+
+
+
+
+    .calendar-container1 {
+      background: #fff;
+      width: 350px;
+      border-radius: 10px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    }
+
+    .calendar-container1 header {
+      display: flex;
+      align-items: center;
+      padding: 25px 30px 10px;
+      justify-content: space-between;
+    }
+
+    header .calendar-navigation1 {
+      display: flex;
+    }
+
+    header .calendar-navigation1 span {
+      height: 38px;
+      width: 38px;
+      margin: 0 1px;
+      cursor: pointer;
+      text-align: center;
+      line-height: 38px;
+      border-radius: 50%;
+      user-select: none;
+      color: #aeabab;
+      font-size: 1.9rem;
+    }
+
+    .calendar-navigation1 span:last-child {
+      margin-right: -10px;
+    }
+
+    header .calendar-navigation1 span:hover {
+      background: #f2f2f2;
+    }
+
+    header .calendar-current-date1 {
+      font-weight: 500;
+      font-size: 1.45rem;
+    }
+
+    .calendar-body {
+      padding: 20px;
+    }
+
+    .calendar-body ul {
+      list-style: none;
+      flex-wrap: wrap;
+      display: flex;
+      text-align: center;
+    }
+
+    .calendar-body .calendar-dates {
+      margin-bottom: 20px;
+    }
+
+    .calendar-body li {
+      width: calc(100% / 7);
+      font-size: 1.07rem;
+      color: #414141;
+    }
+
+    .calendar-body .calendar-weekdays li {
+      cursor: default;
+      font-weight: 500;
+    }
+
+    .calendar-body .calendar-dates li {
+      margin-top: 30px;
+      position: relative;
+      z-index: 1;
+      cursor: pointer;
+    }
+
+    .calendar-dates li.inactive {
+      color: #aaa;
+    }
+
+    .calendar-dates li.active {
+      color: #fff;
+    }
+
+    .calendar-dates li::before {
+      position: absolute;
+      content: "";
+      z-index: -1;
+      top: 50%;
+      left: 50%;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .calendar-dates li.active::before {
+      background: #6332c5;
+    }
+
+    .calendar-dates li:not(.active):hover::before {
+      background: #e4e1e1;
+    }
+  </style>
+
+  <body>
+    <!--Header start-->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+      <div class="d-flex align-items-center justify-content-between">
+        <img src="assets/image/crm.png" alt="" width="100%" class="logo1">
+        <i class="toggle-sidebar-btn pe-2">
+          <i class="fa-solid fa-bars"></i>
+        </i>
+
+      </div>
+      <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+          <li class="nav-item dropdown pe-4 list-inline"><a class="nav-link dropdown-toggle text-black small" href="#"
+              id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">User</a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li><a class="dropdown-item d-flex align-items-center" href="login.html"><i class="fa fa-sign-out"></i>
+                  <span>Logout</span></a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <!--Header end-->
+    <!--artical start-->
+    <!--Sidebar start-->
+    <!--left panel start-->
+    <aside id="sidebar" class="sidebar">
+      <ul class="sidebar-nav" id="sidebar-nav">
+        <li class="nav-item"><img src="assets/image/home.png" alt="">
+          <a class="" href="index.html"><span class="menu-list"><b>Dashboard</b></span></a>
+        </li>
+        <li class="nav-item"><img src="assets/image/composer.png" alt="">
+          <a class="" href="composer.html"> <span class="menu-list"><b>Composer</b></span></a>
+        </li>
+
+
+        <li class="nav-item">
+          <img src="assets/image/account.png" alt="">
+          <a class="" href="add_account.html"> <span class="menu-list"><b>Add Account</b></span></a>
+        </li>
+        <li class="nav-item">
+          <img src="assets/image/calendar.png" alt="">
+          <a class="active" href="calendar.html"> <span class="menu-list"><b>Calendar</b></span></a>
+        </li>
+
+
+        <li class="nav-item">
+          <img src="assets/image/report.png" alt="">
+          <a class="" href="report.html"> <span class="menu-list"><b>Report</b></span></a>
+        </li>
+      </ul>
+    </aside>
+    <!--left panel end-->
+    <!--Sidebar end-->
+    <!--Main start-->
+    <main id="main" class="main">
+      <section class="section">
+        <!--Table code start-->
+        <h3>Calendar</h3>
+        <div class="row cal-head">
+          <div class="col-md-6 d-flex ">
+            <p class="mt-3">This week</p>
+            <button class="m-1  btn btn-primary mt-3" style="height: 31px;">
+              < </button>
+                <button class="m-1  btn btn-primary mt-3" style="height: 31px;">></button>
+                <p class="mt-3">28Jan-03Feb 2024</p>
+          </div>
+          <div class="col-md-2">
+
+
+
+            <div></div>
+            <select class="form-control form-select">
+              <option value="">Week</option>
+              <option value="">Day</option>
+              <option value="">Work</option>
+              <option value="">Month</option>
+              <option value="">2 Month</option>
+              <option value="">4 Month</option>
+              <option value="">Year</option>
+            </select>
+
+
+          </div>
+          <div class="col-md-2">
+
+
+            <p class="mt-3"><i class="fa-solid fa-hourglass"></i> Yet to respond</p>
+
+          </div>
+          <div class="col-md-2">
+
+
+
+            <p class="mt-3"><i class="fa-solid fa-print"></i> </p>
+
+
+          </div>
+
+        </div>
+        <div class="row">
+          
+          <div class="col-md-4">
+           <a href="event.html" class="btn btn-primary mt-3">
+              New Events
+            </a> <br><br>
+
+            <div class="calendar-container1">
+              <header class="calendar-header">
+                <p class="calendar-current-date1"></p>
+                <div class="calendar-navigation1">
+                  <span id="calendar-prev" class="material-symbols-rounded">
+                    <i class="fa-solid fa-less-than" style="color: black;"></i> </span>
+                      <span id="calendar-next" class="material-symbols-rounded">
+                        <i class="fa-solid fa-greater-than" style="color: black;" ></i>
+                      </span>
+                </div>
+              </header>
+
+              <div class="calendar-body">
+                <ul class="calendar-weekdays">
+                  <li>Sun</li>
+                  <li>Mon</li>
+                  <li>Tue</li>
+                  <li>Wed</li>
+                  <li>Thu</li>
+                  <li>Fri</li>
+                  <li>Sat</li>
+                </ul>
+                <ul class="calendar-dates"></ul>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-8 mt-4">
+
+            <div class="card lg-card border-0 cal">
+              <div class="card-body">
+
+                <table class="table-responsive table-bordered ">
+
+                  <thead>
+                    <tr>
+                      <th scope="col">GMT +05:30</th>
+                      <th scope="col">
+                        <div class="d-flex justify-content-between day">
+                          <p>28 Sun</p>
+
+                        </div>
+
+
+                      </th>
+                      <th scope="col">
+                        <div class="d-flex justify-content-between day">
+                          <p>29 Mon</p>
+
+                        </div>
+
+
+                      </th>
+                      <th scope="col">
+                        <div class="d-flex justify-content-between day">
+                          <p>30 Tue</p>
+
+                        </div>
+
+
+                      </th>
+                      <th scope="col">
+                        <div class="d-flex justify-content-between day">
+                          <p>31 Wed</p>
+
+                        </div>
+
+
+                      </th>
+                      <th scope="col">
+                        <div class="d-flex justify-content-between day">
+                          <p>1 Thu</p>
+
+                        </div>
+
+
+                      </th>
+                      <th scope="col">
+                        <div class="d-flex justify-content-between day">
+                          <p>2 Fri</p>
+
+                        </div>
+
+
+                      </th>
+                      <th scope="col">
+                        <div class="d-flex justify-content-between day">
+                          <p>3 Sat</p>
+
+                        </div>
+
+
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">1am</th>
+                      <th></th>
+                      <td></td>
+                      <td><div>
+                        <img src="assets/image/linked.png" alt="" class="w-25">
+                        <p class="m-0">Aakanksha Gupta</p>
+                        <p class="m-0" style="font-size: 12px; color: rgb(136, 112, 112);">Hi Everyone</p>
+                      </div></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td><div>
+                        <img src="assets/image/face.png" alt="" class="w-25">
+                        <p class="m-0">Abhishek Jhariya</p>
+                        <p class="m-0" style="font-size: 12px; color: rgb(136, 112, 112);">Good Evening</p>
+                      </div></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">6am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">7am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">8am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">9am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">10am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">11am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">12am</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">1pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">2pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">3pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">4pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">5pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">6pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">7pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">8pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">9pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">10pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">11pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <th scope="row">12pm</th>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+
+                  </tbody>
+
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Table code end-->
+
+
+      </section>
+
+
+    </main>
+    <!--Main end-->
+    <!--artical end-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/cy.js"></script>
+    <script src="assets/js/newscript.js"></script>
+    <script>
+      let date = new Date();
+      let year = date.getFullYear();
+      let month = date.getMonth();
+
+      const day = document.querySelector(".calendar-dates");
+
+      const currdate = document.querySelector(".calendar-current-date1");
+
+      const prenexIcons = document.querySelectorAll(
+        ".calendar-navigation1 span"
+      );
+
+      // Array of month names
+      const months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December",
+      ];
+
+      // Function to generate the calendar
+      const manipulate = () => {
+        // Get the first day of the month
+        let dayone = new Date(year, month, 1).getDay();
+
+        // Get the last date of the month
+        let lastdate = new Date(year, month + 1, 0).getDate();
+
+        // Get the day of the last date of the month
+        let dayend = new Date(year, month, lastdate).getDay();
+
+        // Get the last date of the previous month
+        let monthlastdate = new Date(year, month, 0).getDate();
+
+        // Variable to store the generated calendar HTML
+        let lit = "";
+
+        // Loop to add the last dates of the previous month
+        for (let i = dayone; i > 0; i--) {
+          lit += `<li class="inactive">${monthlastdate - i + 1}</li>`;
+        }
+
+        // Loop to add the dates of the current month
+        for (let i = 1; i <= lastdate; i++) {
+          // Check if the current date is today
+          let isToday =
+            i === date.getDate() &&
+              month === new Date().getMonth() &&
+              year === new Date().getFullYear()
+              ? "active"
+              : "";
+          lit += `<li class="${isToday}">${i}</li>`;
+        }
+
+        // Loop to add the first dates of the next month
+        for (let i = dayend; i < 6; i++) {
+          lit += `<li class="inactive">${i - dayend + 1}</li>`;
+        }
+
+        // Update the text of the current date element
+        // with the formatted current month and year
+        currdate.innerText = `${months[month]} ${year}`;
+
+        // update the HTML of the dates element
+        // with the generated calendar
+        day.innerHTML = lit;
+      };
+
+      manipulate();
+
+      // Attach a click event listener to each icon
+      prenexIcons.forEach((icon) => {
+        // When an icon is clicked
+        icon.addEventListener("click", () => {
+          // Check if the icon is "calendar-prev"
+          // or "calendar-next"
+          month = icon.id === "calendar-prev" ? month - 1 : month + 1;
+
+          // Check if the month is out of range
+          if (month < 0 || month > 11) {
+            // Set the date to the first day of the
+            // month with the new year
+            date = new Date(year, month, new Date().getDate());
+
+            // Set the year to the new year
+            year = date.getFullYear();
+
+            // Set the month to the new month
+            month = date.getMonth();
+          } else {
+            // Set the date to the current date
+            date = new Date();
+          }
+
+          // Call the manipulate function to
+          // update the calendar display
+          manipulate();
+        });
+      });
+    </script>
+
+
+  </body>
+
+</html>
